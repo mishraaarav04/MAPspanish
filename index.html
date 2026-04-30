@@ -87,6 +87,27 @@
   .irreg-table .sp { font-style: italic; color: var(--red); }
   footer { background: var(--accent-bg); color: #a09080; text-align: center; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; padding: 24px 20px; margin-top: 40px; }
 
+  /* Quiz styles */
+  .quiz-section-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--red); border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin: 36px 0 20px; }
+  .quiz-instructions { font-size: 14px; font-style: italic; color: var(--muted); margin-bottom: 24px; }
+  .quiz-question { margin-bottom: 28px; }
+  .quiz-question p { font-size: 17px; line-height: 1.75; margin-bottom: 8px; }
+  .quiz-question p em { color: var(--red); font-family: 'Playfair Display', serif; }
+  .quiz-input { border: none; border-bottom: 2px solid var(--ink); background: transparent; font-family: 'Playfair Display', serif; font-size: 17px; font-style: italic; color: var(--ink); width: 180px; padding: 2px 4px; outline: none; transition: border-color 0.2s; }
+  .quiz-input:focus { border-bottom-color: var(--red); }
+  .quiz-input.correct { border-bottom-color: #2ecc71; color: #27ae60; }
+  .quiz-input.incorrect { border-bottom-color: #e74c3c; color: #c0392b; }
+  .quiz-feedback { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px; margin-top: 6px; min-height: 16px; }
+  .quiz-feedback.correct { color: #27ae60; }
+  .quiz-feedback.incorrect { color: #c0392b; }
+  .quiz-actions { display: flex; gap: 12px; margin-top: 36px; align-items: center; flex-wrap: wrap; }
+  .quiz-submit-btn { background: var(--accent-bg); color: var(--cream); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 28px; border: none; cursor: pointer; transition: background 0.2s; }
+  .quiz-submit-btn:hover { background: var(--red); }
+  .quiz-reset-btn { background: none; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 20px; border: 1px solid var(--rule); cursor: pointer; transition: all 0.2s; }
+  .quiz-reset-btn:hover { border-color: var(--ink); color: var(--ink); }
+  .quiz-score { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 2px; color: var(--ink); }
+  .quiz-score span { color: var(--red); font-size: 18px; }
+
   /* Lang transition */
   [data-en], [data-es] { transition: opacity 0.15s ease; }
 </style>
@@ -104,6 +125,7 @@
     <button onclick="showPage('vocab')" data-en="Professions" data-es="Profesiones">Professions</button>
     <button onclick="showPage('future')" data-en="Future Tense" data-es="Futuro Simple">Future Tense</button>
     <button onclick="showPage('future-perfect')" data-en="Future Perfect" data-es="Futuro Perfecto">Future Perfect</button>
+    <button onclick="showPage('quiz')">Quiz</button>
     <div class="lang-toggle">
       <button class="lang-btn lang-active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('es')">ES</button>
@@ -151,6 +173,7 @@
     <button class="active" onclick="showPage('vocab')" data-en="Professions" data-es="Profesiones">Professions</button>
     <button onclick="showPage('future')" data-en="Future Tense" data-es="Futuro Simple">Future Tense</button>
     <button onclick="showPage('future-perfect')" data-en="Future Perfect" data-es="Futuro Perfecto">Future Perfect</button>
+    <button onclick="showPage('quiz')">Quiz</button>
     <div class="lang-toggle">
       <button class="lang-btn lang-active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('es')">ES</button>
@@ -236,6 +259,7 @@
     <button onclick="showPage('vocab')" data-en="Professions" data-es="Profesiones">Professions</button>
     <button class="active" onclick="showPage('future')" data-en="Future Tense" data-es="Futuro Simple">Future Tense</button>
     <button onclick="showPage('future-perfect')" data-en="Future Perfect" data-es="Futuro Perfecto">Future Perfect</button>
+    <button onclick="showPage('quiz')">Quiz</button>
     <div class="lang-toggle">
       <button class="lang-btn lang-active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('es')">ES</button>
@@ -359,6 +383,7 @@
     <button onclick="showPage('vocab')" data-en="Professions" data-es="Profesiones">Professions</button>
     <button onclick="showPage('future')" data-en="Future Tense" data-es="Futuro Simple">Future Tense</button>
     <button class="active" onclick="showPage('future-perfect')" data-en="Future Perfect" data-es="Futuro Perfecto">Future Perfect</button>
+    <button onclick="showPage('quiz')">Quiz</button>
     <div class="lang-toggle">
       <button class="lang-btn lang-active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('es')">ES</button>
@@ -476,7 +501,123 @@
   <footer data-en="© El Futuro Spanish Learning · All rights reserved" data-es="© El Futuro Aprendizaje de Español · Todos los derechos reservados">© El Futuro Spanish Learning · All rights reserved</footer>
 </div>
 
+<!-- ══ QUIZ ══ -->
+<div id="page-quiz" class="page">
+  <div class="masthead">
+    <div class="masthead-title">El <span>Futuro</span></div>
+    <div class="masthead-date">Quiz · Spanish Future Tenses</div>
+  </div>
+  <nav class="topnav">
+    <button onclick="showPage('home')" data-en="Home" data-es="Inicio">Home</button>
+    <button onclick="showPage('vocab')" data-en="Professions" data-es="Profesiones">Professions</button>
+    <button onclick="showPage('future')" data-en="Future Tense" data-es="Futuro Simple">Future Tense</button>
+    <button onclick="showPage('future-perfect')" data-en="Future Perfect" data-es="Futuro Perfecto">Future Perfect</button>
+    <button class="active" onclick="showPage('quiz')">Quiz</button>
+    <div class="lang-toggle">
+      <button class="lang-btn lang-active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+  </nav>
+  <div class="inner-page">
+    <div class="article-kicker">Practice · Fill in the Blank</div>
+    <div class="article-headline">Spanish Future Tenses Quiz</div>
+    <p class="article-standfirst">Test your knowledge of the Simple Future and Future Perfect. Fill in each blank with the correct conjugation of the verb in parentheses.</p>
+
+    <div class="article-body">
+
+      <!-- Section 1 -->
+      <div class="quiz-section-label">Section 1 — Definite Future (Simple Future)</div>
+      <p class="quiz-instructions">Fill in the blank with the correct definite future form of the verb provided.</p>
+
+      <div class="quiz-question" data-answer="seré">
+        <p>1. El próximo año, yo <input class="quiz-input" type="text" placeholder="________" autocomplete="off" autocorrect="off" spellcheck="false"> (ser) un abogado famoso.</p>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-answer="tendrán">
+        <p>2. Los científicos <input class="quiz-input" type="text" placeholder="________" autocomplete="off" autocorrect="off" spellcheck="false"> (tener) la cura para la enfermedad muy pronto.</p>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-answer="hará">
+        <p>3. Mañana, la peluquera <input class="quiz-input" type="text" placeholder="________" autocomplete="off" autocorrect="off" spellcheck="false"> (hacer) un peinado increíble.</p>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-answer="trabajaremos">
+        <p>4. Nosotros <input class="quiz-input" type="text" placeholder="________" autocomplete="off" autocorrect="off" spellcheck="false"> (trabajar) con el arquitecto en el nuevo edificio.</p>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="quiz-section-label">Section 2 — Future Perfect</div>
+      <p class="quiz-instructions">Fill in the blank with the correct future perfect form (Future of Haber + Past Participle) of the verb provided.</p>
+
+      <div class="quiz-question" data-answer="habrá escrito">
+        <p>5. Para el lunes, la secretaria ya <input class="quiz-input" type="text" placeholder="________" style="width:220px" autocomplete="off" autocorrect="off" spellcheck="false"> (escribir) todas las cartas.</p>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-answer="habrá puesto">
+        <p>6. Mañana a esta hora, el cocinero ya <input class="quiz-input" type="text" placeholder="________" style="width:200px" autocomplete="off" autocorrect="off" spellcheck="false"> (poner) la mesa.</p>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-answer="habrá contado">
+        <p>7. Antes de jubilarse, el contador <input class="quiz-input" type="text" placeholder="________" style="width:210px" autocomplete="off" autocorrect="off" spellcheck="false"> (contar) mucho dinero.</p>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-answer="habrán visto">
+        <p>8. Para el final del día, los reporteros <input class="quiz-input" type="text" placeholder="________" style="width:200px" autocomplete="off" autocorrect="off" spellcheck="false"> (ver) la noticia.</p>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-actions">
+        <button class="quiz-submit-btn" onclick="checkQuiz()">Check Answers</button>
+        <button class="quiz-reset-btn" onclick="resetQuiz()">Reset</button>
+        <div class="quiz-score" id="quiz-score"></div>
+      </div>
+
+    </div>
+  </div>
+  <footer>© El Futuro Spanish Learning · All rights reserved</footer>
+</div>
+
 <script>
+  // ── Quiz ──
+  function checkQuiz() {
+    const questions = document.querySelectorAll('#page-quiz .quiz-question');
+    let correct = 0;
+    questions.forEach(q => {
+      const input = q.querySelector('.quiz-input');
+      const feedback = q.querySelector('.quiz-feedback');
+      const answer = q.getAttribute('data-answer').trim().toLowerCase();
+      const userAnswer = input.value.trim().toLowerCase();
+      if (userAnswer === answer) {
+        input.classList.remove('incorrect'); input.classList.add('correct');
+        feedback.textContent = '✓ Correct!'; feedback.className = 'quiz-feedback correct';
+        correct++;
+      } else if (userAnswer === '') {
+        input.classList.remove('correct', 'incorrect');
+        feedback.textContent = 'Answer: ' + q.getAttribute('data-answer'); feedback.className = 'quiz-feedback incorrect';
+      } else {
+        input.classList.remove('correct'); input.classList.add('incorrect');
+        feedback.textContent = '✗ Answer: ' + q.getAttribute('data-answer'); feedback.className = 'quiz-feedback incorrect';
+      }
+    });
+    const score = document.getElementById('quiz-score');
+    score.innerHTML = 'Score: <span>' + correct + ' / ' + questions.length + '</span>';
+  }
+
+  function resetQuiz() {
+    document.querySelectorAll('#page-quiz .quiz-input').forEach(i => {
+      i.value = ''; i.classList.remove('correct', 'incorrect');
+    });
+    document.querySelectorAll('#page-quiz .quiz-feedback').forEach(f => { f.textContent = ''; f.className = 'quiz-feedback'; });
+    document.getElementById('quiz-score').innerHTML = '';
+  }
+
   // ── State ──
   let currentLang = 'en';
 
