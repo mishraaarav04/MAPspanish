@@ -7,635 +7,256 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1a1208;
-    --cream: #f5f0e8;
-    --warm-white: #faf8f3;
-    --red: #c0392b;
-    --gold: #b8860b;
-    --muted: #6b5e4e;
-    --rule: #d4c9b5;
-    --accent-bg: #2c1810;
+    --ink: #0d1b2a;
+    --cream: #e8f4f8;
+    --warm-white: #f0f8fc;
+    --red: #0e9aa7;
+    --gold: #f6a623;
+    --muted: #4a6fa5;
+    --rule: #b8d4e3;
+    --accent-bg: #0d1b2a;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--warm-white);
-    color: var(--ink);
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 17px;
-    line-height: 1.65;
-  }
-
-  /* ── PAGES ── */
+  body { background: var(--warm-white); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.65; }
   .page { display: none; min-height: 100vh; }
   .page.active { display: block; }
-
-  /* ── MASTHEAD ── */
-  .masthead {
-    background: var(--warm-white);
-    border-bottom: 3px double var(--ink);
-    padding: 18px 40px 14px;
-    text-align: center;
-    position: relative;
-  }
-  .masthead-kicker {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--muted);
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    padding: 4px 0;
-    margin-bottom: 10px;
-  }
-  .masthead-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(42px, 7vw, 90px);
-    font-weight: 900;
-    line-height: 0.95;
-    letter-spacing: -1px;
-    color: var(--ink);
-  }
+  .masthead { background: var(--warm-white); border-bottom: 3px double var(--ink); padding: 18px 40px 14px; text-align: center; position: relative; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: clamp(42px, 7vw, 90px); font-weight: 900; line-height: 0.95; letter-spacing: -1px; color: var(--ink); }
   .masthead-title span { color: var(--red); }
-  .masthead-sub {
-    font-family: 'Source Serif 4', serif;
-    font-style: italic;
-    font-size: 14px;
-    color: var(--muted);
-    margin-top: 6px;
-  }
-  .masthead-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 10px;
-    border-top: 1px solid var(--rule);
-    padding-top: 6px;
-  }
-
-  /* ── NAV BAR ── */
-  .topnav {
-    background: var(--accent-bg);
-    padding: 0 40px;
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-  }
-  .topnav button {
-    background: none;
-    border: none;
-    color: #d4c9b5;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 12px 20px;
-    cursor: pointer;
-    white-space: nowrap;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s;
-  }
-  .topnav button:hover, .topnav button.active {
-    color: #fff;
-    border-bottom-color: var(--red);
-  }
-
-  /* ── HOMEPAGE GRID ── */
-  .homepage-container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 36px 24px;
-  }
-
-  .section-rule {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--red);
-    border-bottom: 2px solid var(--ink);
-    padding-bottom: 6px;
-    margin-bottom: 28px;
-  }
-
-  /* Hero article */
-  .hero-article {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-bottom: 40px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--rule);
-    align-items: center;
-  }
-  @media (max-width: 720px) {
-    .hero-article { grid-template-columns: 1fr; }
-  }
-  .hero-img-slot {
-    background: var(--rule);
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    border: 1px solid #c9bfae;
-  }
-  .hero-content {}
-  .hero-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 10px;
-    display: block;
-  }
-  .hero-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(26px, 4vw, 44px);
-    font-weight: 700;
-    line-height: 1.15;
-    margin-bottom: 14px;
-    color: var(--ink);
-  }
-  .hero-deck {
-    font-size: 16px;
-    color: var(--muted);
-    margin-bottom: 20px;
-    font-style: italic;
-  }
-  .read-more-btn {
-    display: inline-block;
-    background: var(--accent-bg);
-    color: var(--cream);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 10px 22px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-    text-decoration: none;
-  }
+  .masthead-date { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 10px; border-top: 1px solid var(--rule); padding-top: 6px; }
+  .lang-toggle { margin-left: auto; display: flex; align-items: center; gap: 0; padding: 0 16px; border-left: 1px solid rgba(255,255,255,0.1); }
+  .lang-btn { background: none; border: 1px solid rgba(212,201,181,0.3); color: #d4c9b5; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; cursor: pointer; transition: all 0.2s; line-height: 1; }
+  .lang-btn:first-child { border-radius: 3px 0 0 3px; border-right: none; }
+  .lang-btn:last-child { border-radius: 0 3px 3px 0; }
+  .lang-btn.lang-active { background: var(--red); border-color: var(--red); color: #fff; }
+  .topnav { background: var(--accent-bg); padding: 0 16px 0 40px; display: flex; gap: 0; overflow-x: auto; align-items: center; }
+  .topnav button { background: none; border: none; color: #d4c9b5; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 20px; cursor: pointer; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .topnav button:hover, .topnav button.active { color: #fff; border-bottom-color: var(--red); }
+  .homepage-container { max-width: 1140px; margin: 0 auto; padding: 36px 24px; }
+  .section-rule { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--red); border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 28px; }
+  .hero-article { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--rule); align-items: center; }
+  @media (max-width: 720px) { .hero-article { grid-template-columns: 1fr; } }
+  .hero-img-slot { background: var(--rule); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 2px; border: 1px solid #8ab8d0; }
+  .hero-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 10px; display: block; }
+  .hero-headline { font-family: 'Playfair Display', serif; font-size: clamp(26px, 4vw, 44px); font-weight: 700; line-height: 1.15; margin-bottom: 14px; color: var(--ink); }
+  .hero-deck { font-size: 16px; color: var(--muted); margin-bottom: 20px; font-style: italic; }
+  .read-more-btn { display: inline-block; background: var(--accent-bg); color: var(--cream); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 10px 22px; border: none; cursor: pointer; transition: background 0.2s; text-decoration: none; }
   .read-more-btn:hover { background: var(--red); }
-
-  /* Card grid */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 32px;
-  }
-
-  .card {
-    border-top: 3px solid var(--ink);
-    padding-top: 16px;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 32px; }
+  .card { border-top: 3px solid var(--ink); padding-top: 16px; cursor: pointer; transition: opacity 0.2s; }
   .card:hover { opacity: 0.85; }
-  .card-img-slot {
-    background: var(--rule);
-    aspect-ratio: 3/2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    margin-bottom: 14px;
-    border: 1px solid #c9bfae;
-  }
-  .card-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 6px;
-    display: block;
-  }
-  .card-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 8px;
-    color: var(--ink);
-  }
-  .card-deck {
-    font-size: 14px;
-    color: var(--muted);
-    font-style: italic;
-    margin-bottom: 12px;
-  }
-  .card-cta {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--red);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+  .card-img-slot { background: var(--rule); aspect-ratio: 3/2; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 2px; margin-bottom: 14px; border: 1px solid #8ab8d0; }
+  .card-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 6px; display: block; }
+  .card-headline { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .card-deck { font-size: 14px; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+  .card-cta { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--red); display: flex; align-items: center; gap: 6px; }
   .card-cta::after { content: '→'; }
-
-  /* ── INNER PAGE LAYOUT ── */
-  .inner-page {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
-  }
-
-  .back-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin-bottom: 28px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.2s;
-  }
+  .inner-page { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
+  .back-link { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 28px; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
   .back-link:hover { color: var(--red); }
   .back-link::before { content: '←'; }
-
-  .article-kicker {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 12px;
-  }
-  .article-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 18px;
-    color: var(--ink);
-  }
-  .article-standfirst {
-    font-size: 19px;
-    font-style: italic;
-    color: var(--muted);
-    border-left: 4px solid var(--red);
-    padding-left: 18px;
-    margin-bottom: 28px;
-    line-height: 1.5;
-  }
-  .article-img-slot {
-    background: var(--rule);
-    width: 100%;
-    aspect-ratio: 16/7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    margin-bottom: 32px;
-    border: 1px solid #c9bfae;
-  }
-
-  .article-body h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-weight: 700;
-    margin: 40px 0 14px;
-    color: var(--ink);
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--ink);
-  }
-  .article-body h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 19px;
-    font-style: italic;
-    font-weight: 400;
-    margin: 28px 0 10px;
-    color: var(--ink);
-  }
-  .article-body p {
-    margin-bottom: 18px;
-    font-size: 17px;
-    line-height: 1.75;
-  }
-
-  /* ── GRAMMAR TABLE ── */
-  .grammar-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 24px 0 32px;
-    font-size: 15px;
-  }
-  .grammar-table thead tr {
-    background: var(--accent-bg);
-    color: var(--cream);
-  }
-  .grammar-table th {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 12px 14px;
-    text-align: left;
-  }
-  .grammar-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--rule);
-    vertical-align: top;
-  }
-  .grammar-table tr:nth-child(even) td { background: #f0ebe0; }
+  .article-kicker { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+  .article-headline { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 56px); font-weight: 900; line-height: 1.1; margin-bottom: 18px; color: var(--ink); }
+  .article-standfirst { font-size: 19px; font-style: italic; color: var(--muted); border-left: 4px solid var(--red); padding-left: 18px; margin-bottom: 28px; line-height: 1.5; }
+  .article-img-slot { background: var(--rule); width: 100%; aspect-ratio: 16/7; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 2px; margin-bottom: 32px; border: 1px solid #8ab8d0; }
+  .article-body h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; margin: 40px 0 14px; color: var(--ink); padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
+  .article-body h3 { font-family: 'Playfair Display', serif; font-size: 19px; font-style: italic; font-weight: 400; margin: 28px 0 10px; color: var(--ink); }
+  .article-body p { margin-bottom: 18px; font-size: 17px; line-height: 1.75; }
+  .grammar-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 15px; }
+  .grammar-table thead tr { background: var(--accent-bg); color: var(--cream); }
+  .grammar-table th { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 14px; text-align: left; }
+  .grammar-table td { padding: 10px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .grammar-table tr:nth-child(even) td { background: #daeef6; }
   .grammar-table .spanish { font-style: italic; color: var(--red); font-family: 'Playfair Display', serif; }
   .grammar-table .ending { font-family: 'DM Mono', monospace; font-weight: 500; }
-
-  /* ── EXAMPLE BOXES ── */
-  .example-box {
-    background: #f0ebe0;
-    border-left: 4px solid var(--gold);
-    padding: 18px 22px;
-    margin: 20px 0;
-    border-radius: 0 4px 4px 0;
-  }
-  .example-box .sp {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-style: italic;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .example-box .en {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-  }
-
-  /* ── VOCAB GRID ── */
-  .vocab-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 12px;
-    margin: 24px 0;
-  }
-  .vocab-card {
-    background: var(--cream);
-    border: 1px solid var(--rule);
-    padding: 14px 16px;
-    border-top: 3px solid var(--gold);
-  }
-  .vocab-card .sp {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    font-style: italic;
-    color: var(--ink);
-    margin-bottom: 3px;
-  }
-  .vocab-card .en {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  /* ── CALLOUT BOX ── */
-  .callout {
-    background: var(--accent-bg);
-    color: var(--cream);
-    padding: 22px 26px;
-    margin: 28px 0;
-  }
-  .callout-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 12px;
-  }
-  .callout p { font-size: 15px; margin-bottom: 10px; line-height: 1.6; color: #e8dfd0; }
+  .example-box { background: #daeef6; border-left: 4px solid var(--gold); padding: 18px 22px; margin: 20px 0; border-radius: 0 4px 4px 0; }
+  .example-box .sp { font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic; color: var(--ink); margin-bottom: 4px; }
+  .example-box .en { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--muted); letter-spacing: 0.5px; }
+  .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 24px 0; }
+  .vocab-card { background: var(--cream); border: 1px solid var(--rule); padding: 14px 16px; border-top: 3px solid var(--gold); }
+  .vocab-card .sp { font-family: 'Playfair Display', serif; font-size: 15px; font-style: italic; color: var(--ink); margin-bottom: 3px; }
+  .vocab-card .en { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+  .callout { background: var(--accent-bg); color: var(--cream); padding: 22px 26px; margin: 28px 0; }
+  .callout-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .callout p { font-size: 15px; margin-bottom: 10px; line-height: 1.6; color: #c8e8f5; }
   .callout p:last-child { margin-bottom: 0; }
-
-  /* ── IRREGULAR TABLE ── */
-  .irreg-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 15px;
-    margin: 20px 0 30px;
-  }
-  .irreg-table th {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: var(--rule);
-    padding: 10px 14px;
-    text-align: left;
-  }
-  .irreg-table td {
-    padding: 9px 14px;
-    border-bottom: 1px solid var(--rule);
-  }
-  .irreg-table tr:hover td { background: #ede8dc; }
+  .irreg-table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 20px 0 30px; }
+  .irreg-table th { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; background: var(--rule); padding: 10px 14px; text-align: left; }
+  .irreg-table td { padding: 9px 14px; border-bottom: 1px solid var(--rule); }
+  .irreg-table tr:hover td { background: #cde8f4; }
   .irreg-table .sp { font-style: italic; color: var(--red); }
+  footer { background: var(--accent-bg); color: #a09080; text-align: center; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; padding: 24px 20px; margin-top: 40px; }
 
-  footer {
-    background: var(--accent-bg);
-    color: #a09080;
-    text-align: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    padding: 24px 20px;
-    margin-top: 40px;
-  }
+  /* Lang transition */
+  [data-en], [data-es] { transition: opacity 0.15s ease; }
 </style>
 </head>
 <body>
 
-<!-- ════════════════════════════ HOME PAGE ════════════════════════════ -->
+<!-- ══ HOME ══ -->
 <div id="page-home" class="page active">
   <div class="masthead">
-    <div class="masthead-kicker">Your Spanish-Language Learning Resource</div>
     <div class="masthead-title">El <span>Futuro</span></div>
-    <div class="masthead-sub">Mastering Spanish tenses, one edition at a time</div>
-    <div class="masthead-date">Special Edition &nbsp;·&nbsp; Professions &amp; The Future Tenses</div>
+    <div class="masthead-date" data-en="Special Edition · Professions &amp; The Future Tenses" data-es="Edición Especial · Profesiones y Los Tiempos Futuros">Special Edition · Professions &amp; The Future Tenses</div>
   </div>
   <nav class="topnav">
-    <button class="active" onclick="showPage('home')">Home</button>
-    <button onclick="showPage('vocab')">Professions</button>
-    <button onclick="showPage('future')">Future Tense</button>
-    <button onclick="showPage('future-perfect')">Future Perfect</button>
+    <button class="active" onclick="showPage('home')" data-en="Home" data-es="Inicio">Home</button>
+    <button onclick="showPage('vocab')" data-en="Professions" data-es="Profesiones">Professions</button>
+    <button onclick="showPage('future')" data-en="Future Tense" data-es="Futuro Simple">Future Tense</button>
+    <button onclick="showPage('future-perfect')" data-en="Future Perfect" data-es="Futuro Perfecto">Future Perfect</button>
+    <div class="lang-toggle">
+      <button class="lang-btn lang-active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
   </nav>
-
   <div class="homepage-container">
-    <div class="section-rule">Featured This Edition</div>
-
-    <!-- HERO -->
+    <div class="section-rule" data-en="Featured This Edition" data-es="Destacado en Esta Edición">Featured This Edition</div>
     <div class="hero-article">
-      <div class="hero-img-slot">[ IMAGE PLACEHOLDER ]</div>
+      <div class="hero-img-slot"><img src="istockphoto-1587604256-612x612.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="hero-content">
-        <span class="hero-tag">Vocabulary</span>
-        <div class="hero-headline">Las Profesiones: The Words That Define What We Do</div>
-        <p class="hero-deck">From <em>el arquitecto</em> to <em>la psicóloga</em>, an essential guide to talking about careers in Spanish — with gender rules, pronunciation tips, and real-world examples.</p>
-        <button class="read-more-btn" onclick="showPage('vocab')">Read the full guide →</button>
+        <span class="hero-tag" data-en="Vocabulary" data-es="Vocabulario">Vocabulary</span>
+        <div class="hero-headline" data-en="Las Profesiones: The Words That Define What We Do" data-es="Las Profesiones: Las Palabras que Definen lo que Hacemos">Las Profesiones: The Words That Define What We Do</div>
+        <p class="hero-deck" data-en="From <em>el arquitecto</em> to <em>la psicóloga</em>, an essential guide to talking about careers in Spanish — with gender rules, pronunciation tips, and real-world examples." data-es="Desde <em>el arquitecto</em> hasta <em>la psicóloga</em>, una guía esencial para hablar de profesiones en español — con reglas de género y ejemplos del mundo real.">From <em>el arquitecto</em> to <em>la psicóloga</em>, an essential guide to talking about careers in Spanish — with gender rules, pronunciation tips, and real-world examples.</p>
+        <button class="read-more-btn" onclick="showPage('vocab')" data-en="Read the full guide →" data-es="Leer la guía completa →">Read the full guide →</button>
       </div>
     </div>
-
-    <div class="section-rule">In This Edition</div>
+    <div class="section-rule" data-en="In This Edition" data-es="En Esta Edición">In This Edition</div>
     <div class="card-grid">
-
       <div class="card" onclick="showPage('future')">
-        <div class="card-img-slot">[ IMAGE PLACEHOLDER ]</div>
-        <span class="card-tag">Grammar</span>
-        <div class="card-headline">The Simple Future: Making Plans &amp; Predictions</div>
-        <p class="card-deck">Everything you need to conjugate the <em>futuro simple</em> — including the nine most common irregular stems and four key usage patterns.</p>
-        <span class="card-cta">Read more</span>
+        <div class="card-img-slot"><img src="spanish-future-tense-regular-verbs-1024x811_jpg.webp" style="width:100%;height:100%;object-fit:cover;"></div>
+        <span class="card-tag" data-en="Grammar" data-es="Gramática">Grammar</span>
+        <div class="card-headline" data-en="The Simple Future: Making Plans &amp; Predictions" data-es="El Futuro Simple: Planes y Predicciones">The Simple Future: Making Plans &amp; Predictions</div>
+        <p class="card-deck" data-en="Everything you need to conjugate the <em>futuro simple</em> — including the nine most common irregular stems and four key usage patterns." data-es="Todo lo que necesitas para conjugar el <em>futuro simple</em> — incluyendo los nueve verbos irregulares más comunes y cuatro usos clave.">Everything you need to conjugate the <em>futuro simple</em> — including the nine most common irregular stems and four key usage patterns.</p>
+        <span class="card-cta" data-en="Read more" data-es="Leer más">Read more</span>
       </div>
-
       <div class="card" onclick="showPage('future-perfect')">
-        <div class="card-img-slot">[ IMAGE PLACEHOLDER ]</div>
-        <span class="card-tag">Grammar</span>
-        <div class="card-headline">The Future Perfect: Actions Already Done Before They Happen</div>
-        <p class="card-deck">How to say "I will have finished" — master the <em>futuro perfecto</em> and its surprisingly handy use for expressing probability about the past.</p>
-        <span class="card-cta">Read more</span>
+        <div class="card-img-slot"><img src="2.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+        <span class="card-tag" data-en="Grammar" data-es="Gramática">Grammar</span>
+        <div class="card-headline" data-en="The Future Perfect: Actions Already Done Before They Happen" data-es="El Futuro Perfecto: Acciones ya Completadas Antes de Ocurrir">The Future Perfect: Actions Already Done Before They Happen</div>
+        <p class="card-deck" data-en='How to say "I will have finished" — master the <em>futuro perfecto</em> and its surprisingly handy use for expressing probability about the past.' data-es='Cómo decir "habré terminado" — domina el <em>futuro perfecto</em> y su uso para expresar probabilidad sobre el pasado.'>How to say "I will have finished" — master the futuro perfecto.</p>
+        <span class="card-cta" data-en="Read more" data-es="Leer más">Read more</span>
       </div>
-
     </div>
   </div>
-  <footer>© El Futuro Spanish Learning · All rights reserved</footer>
+  <footer data-en="© El Futuro Spanish Learning · All rights reserved" data-es="© El Futuro Aprendizaje de Español · Todos los derechos reservados">© El Futuro Spanish Learning · All rights reserved</footer>
 </div>
 
-<!-- ════════════════════════════ VOCAB PAGE ════════════════════════════ -->
+<!-- ══ VOCAB ══ -->
 <div id="page-vocab" class="page">
   <div class="masthead">
     <div class="masthead-title">El <span>Futuro</span></div>
   </div>
   <nav class="topnav">
-    <button onclick="showPage('home')">Home</button>
-    <button class="active" onclick="showPage('vocab')">Professions</button>
-    <button onclick="showPage('future')">Future Tense</button>
-    <button onclick="showPage('future-perfect')">Future Perfect</button>
+    <button onclick="showPage('home')" data-en="Home" data-es="Inicio">Home</button>
+    <button class="active" onclick="showPage('vocab')" data-en="Professions" data-es="Profesiones">Professions</button>
+    <button onclick="showPage('future')" data-en="Future Tense" data-es="Futuro Simple">Future Tense</button>
+    <button onclick="showPage('future-perfect')" data-en="Future Perfect" data-es="Futuro Perfecto">Future Perfect</button>
+    <div class="lang-toggle">
+      <button class="lang-btn lang-active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
   </nav>
   <div class="inner-page">
-    <button class="back-link" onclick="showPage('home')">Back to Home</button>
-    <div class="article-kicker">Vocabulary · Professions</div>
-    <div class="article-headline">Las Profesiones: Careers &amp; Callings in Spanish</div>
-    <p class="article-standfirst">From the courtroom to the kitchen, Spanish has a word for every profession — and crucially, two forms for every job: one for men and one for women.</p>
-    <div class="article-img-slot">[ IMAGE PLACEHOLDER ]</div>
-
+    <button class="back-link" onclick="showPage('home')" data-en="Back to Home" data-es="Volver al Inicio">Back to Home</button>
+    <div class="article-kicker" data-en="Vocabulary · Professions" data-es="Vocabulario · Profesiones">Vocabulary · Professions</div>
+    <div class="article-headline" data-en="Las Profesiones: Careers &amp; Callings in Spanish" data-es="Las Profesiones: Carreras y Vocaciones en Español">Las Profesiones: Careers &amp; Callings in Spanish</div>
+    <p class="article-standfirst" data-en="From the courtroom to the kitchen, Spanish has a word for every profession — and crucially, two forms for every job: one for men and one for women." data-es="Del juzgado a la cocina, el español tiene una palabra para cada profesión — y, crucialmente, dos formas para cada trabajo: una para hombres y otra para mujeres.">From the courtroom to the kitchen, Spanish has a word for every profession.</p>
+    <div class="article-img-slot"><img src="istockphoto-1587604256-612x612.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
     <div class="article-body">
-      <h2>Why Gender Matters in Spanish Professions</h2>
-      <p>In Spanish, nouns have grammatical gender. Most profession nouns follow a predictable pattern: the masculine form ends in <strong>-o</strong> and the feminine in <strong>-a</strong>. For example, <em>el cocinero</em> becomes <em>la cocinera</em>. When the word ends in <strong>-ista</strong> or <strong>-ista</strong> (like <em>el/la electricista</em>), it stays the same for both genders — only the article changes.</p>
-
-      <h2>The Full Vocabulary List</h2>
-      <p>Below are 21 essential profession words. All Spanish nouns are listed with their article (<em>el / la</em>) which signals the gender.</p>
-
+      <h2 data-en="Why Gender Matters in Spanish Professions" data-es="Por Qué el Género Importa en las Profesiones en Español">Why Gender Matters in Spanish Professions</h2>
+      <p data-en='In Spanish, nouns have grammatical gender. Most profession nouns follow a predictable pattern: the masculine form ends in <strong>-o</strong> and the feminine in <strong>-a</strong>. For example, <em>el cocinero</em> becomes <em>la cocinera</em>. When the word ends in <strong>-ista</strong> (like <em>el/la electricista</em>), it stays the same for both genders — only the article changes.' data-es='En español, los sustantivos tienen género gramatical. La mayoría de las profesiones sigue un patrón predecible: la forma masculina termina en <strong>-o</strong> y la femenina en <strong>-a</strong>. Por ejemplo, <em>el cocinero</em> se convierte en <em>la cocinera</em>. Cuando la palabra termina en <strong>-ista</strong> (como <em>el/la electricista</em>), permanece igual para ambos géneros — solo cambia el artículo.'>In Spanish, nouns have grammatical gender.</p>
+      <h2 data-en="The Full Vocabulary List" data-es="La Lista Completa de Vocabulario">The Full Vocabulary List</h2>
+      <p data-en="Below are 22 essential profession words. All Spanish nouns are listed with their article (<em>el / la</em>) which signals the gender." data-es="A continuación, 22 palabras esenciales de profesiones. Todos los sustantivos españoles van con su artículo (<em>el / la</em>) que indica el género.">Below are 22 essential profession words.</p>
       <div class="vocab-grid">
-        <div class="vocab-card"><div class="sp">el abogado / la abogada</div><div class="en">Lawyer</div></div>
-        <div class="vocab-card"><div class="sp">el actor / la actriz</div><div class="en">Actor</div></div>
-        <div class="vocab-card"><div class="sp">el arqueólogo / la arqueóloga</div><div class="en">Archaeologist</div></div>
-        <div class="vocab-card"><div class="sp">el arquitecto / la arquitecta</div><div class="en">Architect</div></div>
-        <div class="vocab-card"><div class="sp">el bombero / la bombera</div><div class="en">Firefighter</div></div>
-        <div class="vocab-card"><div class="sp">el carpintero / la carpintera</div><div class="en">Carpenter</div></div>
-        <div class="vocab-card"><div class="sp">el científico / la científica</div><div class="en">Scientist</div></div>
-        <div class="vocab-card"><div class="sp">el cocinero / la cocinera</div><div class="en">Cook / Chef</div></div>
-        <div class="vocab-card"><div class="sp">el consejero / la consejera</div><div class="en">Counselor / Advisor</div></div>
-        <div class="vocab-card"><div class="sp">el contador / la contadora</div><div class="en">Accountant</div></div>
-        <div class="vocab-card"><div class="sp">el corredor / la corredora de bolsa</div><div class="en">Stockbroker</div></div>
-        <div class="vocab-card"><div class="sp">el diseñador / la diseñadora</div><div class="en">Designer</div></div>
-        <div class="vocab-card"><div class="sp">el electricista / la electricista</div><div class="en">Electrician</div></div>
-        <div class="vocab-card"><div class="sp">el hombre / la mujer de negocios</div><div class="en">Businessperson</div></div>
-        <div class="vocab-card"><div class="sp">el maestro / la maestra</div><div class="en">Teacher</div></div>
-        <div class="vocab-card"><div class="sp">el peluquero / la peluquera</div><div class="en">Hairdresser</div></div>
-        <div class="vocab-card"><div class="sp">el pintor / la pintora</div><div class="en">Painter</div></div>
-        <div class="vocab-card"><div class="sp">el político / la política</div><div class="en">Politician</div></div>
-        <div class="vocab-card"><div class="sp">el psicólogo / la psicóloga</div><div class="en">Psychologist</div></div>
-        <div class="vocab-card"><div class="sp">el reportero / la reportera</div><div class="en">Reporter</div></div>
-        <div class="vocab-card"><div class="sp">el secretario / la secretaria</div><div class="en">Secretary</div></div>
-        <div class="vocab-card"><div class="sp">el técnico / la técnica</div><div class="en">Technician</div></div>
+        <div class="vocab-card"><div class="sp">el abogado / la abogada</div><div class="en" data-en="Lawyer" data-es="Abogado/a">Lawyer</div></div>
+        <div class="vocab-card"><div class="sp">el actor / la actriz</div><div class="en" data-en="Actor" data-es="Actor / Actriz">Actor</div></div>
+        <div class="vocab-card"><div class="sp">el arqueólogo / la arqueóloga</div><div class="en" data-en="Archaeologist" data-es="Arqueólogo/a">Archaeologist</div></div>
+        <div class="vocab-card"><div class="sp">el arquitecto / la arquitecta</div><div class="en" data-en="Architect" data-es="Arquitecto/a">Architect</div></div>
+        <div class="vocab-card"><div class="sp">el bombero / la bombera</div><div class="en" data-en="Firefighter" data-es="Bombero/a">Firefighter</div></div>
+        <div class="vocab-card"><div class="sp">el carpintero / la carpintera</div><div class="en" data-en="Carpenter" data-es="Carpintero/a">Carpenter</div></div>
+        <div class="vocab-card"><div class="sp">el científico / la científica</div><div class="en" data-en="Scientist" data-es="Científico/a">Scientist</div></div>
+        <div class="vocab-card"><div class="sp">el cocinero / la cocinera</div><div class="en" data-en="Cook / Chef" data-es="Cocinero/a">Cook / Chef</div></div>
+        <div class="vocab-card"><div class="sp">el consejero / la consejera</div><div class="en" data-en="Counselor / Advisor" data-es="Consejero/a">Counselor / Advisor</div></div>
+        <div class="vocab-card"><div class="sp">el contador / la contadora</div><div class="en" data-en="Accountant" data-es="Contador/a">Accountant</div></div>
+        <div class="vocab-card"><div class="sp">el corredor / la corredora de bolsa</div><div class="en" data-en="Stockbroker" data-es="Corredor/a de bolsa">Stockbroker</div></div>
+        <div class="vocab-card"><div class="sp">el diseñador / la diseñadora</div><div class="en" data-en="Designer" data-es="Diseñador/a">Designer</div></div>
+        <div class="vocab-card"><div class="sp">el electricista / la electricista</div><div class="en" data-en="Electrician" data-es="Electricista">Electrician</div></div>
+        <div class="vocab-card"><div class="sp">el hombre / la mujer de negocios</div><div class="en" data-en="Businessperson" data-es="Hombre/Mujer de negocios">Businessperson</div></div>
+        <div class="vocab-card"><div class="sp">el maestro / la maestra</div><div class="en" data-en="Teacher" data-es="Maestro/a">Teacher</div></div>
+        <div class="vocab-card"><div class="sp">el peluquero / la peluquera</div><div class="en" data-en="Hairdresser" data-es="Peluquero/a">Hairdresser</div></div>
+        <div class="vocab-card"><div class="sp">el pintor / la pintora</div><div class="en" data-en="Painter" data-es="Pintor/a">Painter</div></div>
+        <div class="vocab-card"><div class="sp">el político / la política</div><div class="en" data-en="Politician" data-es="Político/a">Politician</div></div>
+        <div class="vocab-card"><div class="sp">el psicólogo / la psicóloga</div><div class="en" data-en="Psychologist" data-es="Psicólogo/a">Psychologist</div></div>
+        <div class="vocab-card"><div class="sp">el reportero / la reportera</div><div class="en" data-en="Reporter" data-es="Reportero/a">Reporter</div></div>
+        <div class="vocab-card"><div class="sp">el secretario / la secretaria</div><div class="en" data-en="Secretary" data-es="Secretario/a">Secretary</div></div>
+        <div class="vocab-card"><div class="sp">el técnico / la técnica</div><div class="en" data-en="Technician" data-es="Técnico/a">Technician</div></div>
       </div>
-
-      <h2>In Context: Professions + Future Tense</h2>
-      <p>Profession vocabulary really comes alive when combined with the future tenses. Here are examples using both the Simple Future and the Future Perfect:</p>
-
+      <h2 data-en="In Context: Professions + Future Tense" data-es="En Contexto: Profesiones + Tiempo Futuro">In Context: Professions + Future Tense</h2>
+      <p data-en="Profession vocabulary really comes alive when combined with the future tenses. Here are examples using both the Simple Future and the Future Perfect:" data-es="El vocabulario de profesiones cobra vida cuando se combina con los tiempos futuros. Aquí hay ejemplos usando el Futuro Simple y el Futuro Perfecto:">Profession vocabulary really comes alive when combined with the future tenses.</p>
       <div class="example-box">
         <div class="sp">La arquitecta diseñará un nuevo edificio el año que viene.</div>
-        <div class="en">The architect (f.) will design a new building next year.</div>
+        <div class="en" data-en="The architect (f.) will design a new building next year." data-es="La arquitecta diseñará un nuevo edificio el año que viene.">The architect (f.) will design a new building next year.</div>
       </div>
       <div class="example-box">
         <div class="sp">El bombero habrá rescatado a tres personas para el mediodía.</div>
-        <div class="en">The firefighter will have rescued three people by noon.</div>
+        <div class="en" data-en="The firefighter will have rescued three people by noon." data-es="El bombero habrá rescatado a tres personas para el mediodía.">The firefighter will have rescued three people by noon.</div>
       </div>
       <div class="example-box">
         <div class="sp">La psicóloga tendrá muchos pacientes esta semana.</div>
-        <div class="en">The psychologist (f.) will have many patients this week.</div>
+        <div class="en" data-en="The psychologist (f.) will have many patients this week." data-es="La psicóloga tendrá muchos pacientes esta semana.">The psychologist (f.) will have many patients this week.</div>
       </div>
       <div class="example-box">
         <div class="sp">El cocinero habrá preparado el menú antes de las seis.</div>
-        <div class="en">The chef will have prepared the menu before six o'clock.</div>
+        <div class="en" data-en="The chef will have prepared the menu before six o'clock." data-es="El cocinero habrá preparado el menú antes de las seis.">The chef will have prepared the menu before six o'clock.</div>
       </div>
       <div class="example-box">
         <div class="sp">Los reporteros sabrán la verdad pronto.</div>
-        <div class="en">The reporters will know the truth soon.</div>
+        <div class="en" data-en="The reporters will know the truth soon." data-es="Los reporteros sabrán la verdad pronto.">The reporters will know the truth soon.</div>
       </div>
       <div class="example-box">
-        <div class="sp">¿Será abogado algún día? (I wonder if he will be a lawyer someday?)</div>
-        <div class="en">I wonder if he'll become a lawyer someday? (probability use)</div>
+        <div class="sp">¿Será abogado algún día?</div>
+        <div class="en" data-en="I wonder if he'll become a lawyer someday? (probability use)" data-es="¿Será abogado algún día? (uso de probabilidad)">I wonder if he'll become a lawyer someday? (probability use)</div>
       </div>
-
       <div class="callout">
-        <div class="callout-title">💡 Quick Tip</div>
-        <p>When stating someone's profession in Spanish, you do <strong>not</strong> use an article after the verb <em>ser</em>: <em>Ella es maestra</em> (She is a teacher) — not <em>Ella es una maestra</em>. However, when you add an adjective, the article returns: <em>Ella es una maestra excelente.</em></p>
+        <div class="callout-title" data-en="💡 Quick Tip" data-es="💡 Consejo Rápido">💡 Quick Tip</div>
+        <p data-en='When stating someone\'s profession in Spanish, you do <strong>not</strong> use an article after the verb <em>ser</em>: <em>Ella es maestra</em> (She is a teacher) — not <em>Ella es una maestra</em>. However, when you add an adjective, the article returns: <em>Ella es una maestra excelente.</em>' data-es='Al indicar la profesión de alguien en español, <strong>no</strong> se usa artículo después del verbo <em>ser</em>: <em>Ella es maestra</em> — no <em>Ella es una maestra</em>. Sin embargo, al añadir un adjetivo, el artículo vuelve: <em>Ella es una maestra excelente.</em>'>Quick tip about articles and professions.</p>
       </div>
     </div>
   </div>
-  <footer>© El Futuro Spanish Learning · All rights reserved</footer>
+  <footer data-en="© El Futuro Spanish Learning · All rights reserved" data-es="© El Futuro Aprendizaje de Español · Todos los derechos reservados">© El Futuro Spanish Learning · All rights reserved</footer>
 </div>
 
-<!-- ════════════════════════════ FUTURE TENSE PAGE ════════════════════════════ -->
+<!-- ══ FUTURE SIMPLE ══ -->
 <div id="page-future" class="page">
   <div class="masthead">
     <div class="masthead-title">El <span>Futuro</span></div>
   </div>
   <nav class="topnav">
-    <button onclick="showPage('home')">Home</button>
-    <button onclick="showPage('vocab')">Professions</button>
-    <button class="active" onclick="showPage('future')">Future Tense</button>
-    <button onclick="showPage('future-perfect')">Future Perfect</button>
+    <button onclick="showPage('home')" data-en="Home" data-es="Inicio">Home</button>
+    <button onclick="showPage('vocab')" data-en="Professions" data-es="Profesiones">Professions</button>
+    <button class="active" onclick="showPage('future')" data-en="Future Tense" data-es="Futuro Simple">Future Tense</button>
+    <button onclick="showPage('future-perfect')" data-en="Future Perfect" data-es="Futuro Perfecto">Future Perfect</button>
+    <div class="lang-toggle">
+      <button class="lang-btn lang-active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
   </nav>
   <div class="inner-page">
-    <button class="back-link" onclick="showPage('home')">Back to Home</button>
-    <div class="article-kicker">Grammar · Tenses</div>
-    <div class="article-headline">The Simple Future Tense: <em>El Futuro Simple</em></div>
-    <p class="article-standfirst">The Spanish Simple Future is your tool for predictions, plans, and one of its most surprising uses — expressing what's probably happening right now.</p>
-    <div class="article-img-slot">[ IMAGE PLACEHOLDER ]</div>
-
+    <button class="back-link" onclick="showPage('home')" data-en="Back to Home" data-es="Volver al Inicio">Back to Home</button>
+    <div class="article-kicker" data-en="Grammar · Tenses" data-es="Gramática · Tiempos Verbales">Grammar · Tenses</div>
+    <div class="article-headline" data-en="The Simple Future Tense: El Futuro Simple" data-es="El Tiempo Futuro Simple: El Futuro Simple">The Simple Future Tense: El Futuro Simple</div>
+    <p class="article-standfirst" data-en="The Spanish Simple Future is your tool for predictions, plans, and one of its most surprising uses — expressing what's probably happening right now." data-es="El Futuro Simple en español es tu herramienta para predicciones, planes y uno de sus usos más sorprendentes — expresar lo que probablemente está pasando ahora mismo.">The Spanish Simple Future is your tool for predictions, plans, and probability.</p>
+    <div class="article-img-slot"><img src="spanish-future-tense-regular-verbs-1024x811_jpg.webp" style="width:100%;height:100%;object-fit:cover;"></div>
     <div class="article-body">
-      <h2>How to Form It</h2>
-      <p>The Simple Future is elegantly consistent: take the <strong>infinitive</strong> of any verb and add the six endings shown below. Unlike other tenses, you never drop the infinitive ending. The same endings work for <em>-ar</em>, <em>-er</em>, and <em>-ir</em> verbs alike.</p>
-
+      <h2 data-en="How to Form It" data-es="Cómo Formarlo">How to Form It</h2>
+      <p data-en="The Simple Future is elegantly consistent: take the <strong>infinitive</strong> of any verb and add the six endings shown below. Unlike other tenses, you never drop the infinitive ending. The same endings work for <em>-ar</em>, <em>-er</em>, and <em>-ir</em> verbs alike." data-es="El Futuro Simple es elegantemente consistente: toma el <strong>infinitivo</strong> de cualquier verbo y añade las seis terminaciones que se muestran a continuación. A diferencia de otros tiempos, nunca se elimina la terminación del infinitivo. Las mismas terminaciones funcionan para los verbos <em>-ar</em>, <em>-er</em> e <em>-ir</em>.">The Simple Future: take the infinitive and add endings.</p>
       <table class="grammar-table">
         <thead>
-          <tr><th>Subject</th><th>Ending</th><th>hablar (to speak)</th><th>comer (to eat)</th><th>vivir (to live)</th></tr>
+          <tr>
+            <th data-en="Subject" data-es="Sujeto">Subject</th>
+            <th data-en="Ending" data-es="Terminación">Ending</th>
+            <th>hablar</th><th>comer</th><th>vivir</th>
+          </tr>
         </thead>
         <tbody>
           <tr><td>Yo</td><td class="ending">-é</td><td class="spanish">hablaré</td><td class="spanish">comeré</td><td class="spanish">viviré</td></tr>
@@ -646,117 +267,120 @@
           <tr><td>Ellos / Uds.</td><td class="ending">-án</td><td class="spanish">hablarán</td><td class="spanish">comerán</td><td class="spanish">vivirán</td></tr>
         </tbody>
       </table>
-
-      <h2>The Four Key Usages</h2>
-
-      <h3>1. Future Actions (What Will Happen)</h3>
-      <p>The most common use — describing what <em>will</em> happen, often alongside time expressions like <em>mañana</em>, <em>la próxima semana</em>, or <em>en el futuro</em>.</p>
+      <h2 data-en="The Four Key Usages" data-es="Los Cuatro Usos Principales">The Four Key Usages</h2>
+      <h3 data-en="1. Future Actions (What Will Happen)" data-es="1. Acciones Futuras (Lo que Pasará)">1. Future Actions</h3>
+      <p data-en="The most common use — describing what <em>will</em> happen, often alongside time expressions like <em>mañana</em>, <em>la próxima semana</em>, or <em>en el futuro</em>." data-es="El uso más común — describir lo que <em>pasará</em>, frecuentemente con expresiones de tiempo como <em>mañana</em>, <em>la próxima semana</em> o <em>en el futuro</em>.">The most common use — describing what will happen.</p>
       <div class="example-box">
         <div class="sp">Mañana comeré en un restaurante.</div>
-        <div class="en">Tomorrow I will eat at a restaurant.</div>
+        <div class="en" data-en="Tomorrow I will eat at a restaurant." data-es="Mañana comeré en un restaurante.">Tomorrow I will eat at a restaurant.</div>
       </div>
       <div class="example-box">
         <div class="sp">El arquitecto hablará con el cliente la próxima semana.</div>
-        <div class="en">The architect will speak with the client next week.</div>
+        <div class="en" data-en="The architect will speak with the client next week." data-es="El arquitecto hablará con el cliente la próxima semana.">The architect will speak with the client next week.</div>
       </div>
       <div class="example-box">
         <div class="sp">Los científicos vivirán en la estación espacial por seis meses.</div>
-        <div class="en">The scientists will live on the space station for six months.</div>
+        <div class="en" data-en="The scientists will live on the space station for six months." data-es="Los científicos vivirán en la estación espacial por seis meses.">The scientists will live on the space station for six months.</div>
       </div>
-
-      <h3>2. Probability / Supposition in the Present</h3>
-      <p>One of Spanish's most distinctive features: use the future tense to wonder or speculate about something happening <em>right now</em>. It translates roughly as "I wonder…" or "probably."</p>
+      <h3 data-en="2. Probability / Supposition in the Present" data-es="2. Probabilidad / Suposición en el Presente">2. Probability</h3>
+      <p data-en='One of Spanish\'s most distinctive features: use the future tense to wonder or speculate about something happening <em>right now</em>. It translates roughly as "I wonder…" or "probably."' data-es='Una de las características más distintivas del español: usa el futuro para preguntarse o especular sobre algo que ocurre <em>ahora mismo</em>. Se traduce aproximadamente como "me pregunto…" o "probablemente."'>Use the future tense to wonder or speculate about the present.</p>
       <div class="example-box">
         <div class="sp">¿Qué hora será?</div>
-        <div class="en">I wonder what time it is? (What time could it be?)</div>
+        <div class="en" data-en="I wonder what time it is? (What time could it be?)" data-es="¿Qué hora será? — expresión de duda sobre el presente">I wonder what time it is?</div>
       </div>
       <div class="example-box">
         <div class="sp">Estará en su casa.</div>
-        <div class="en">He is probably at his house.</div>
+        <div class="en" data-en="He is probably at his house." data-es="Probablemente está en su casa.">He is probably at his house.</div>
       </div>
       <div class="example-box">
         <div class="sp">La maestra tendrá muchos exámenes que corregir.</div>
-        <div class="en">The teacher probably has many exams to grade.</div>
+        <div class="en" data-en="The teacher probably has many exams to grade." data-es="La maestra probablemente tiene muchos exámenes que corregir.">The teacher probably has many exams to grade.</div>
       </div>
-
-      <h3>3. Negation</h3>
-      <p>To negate, simply place <strong>no</strong> directly before the conjugated verb.</p>
+      <h3 data-en="3. Negation" data-es="3. Negación">3. Negation</h3>
+      <p data-en="To negate, simply place <strong>no</strong> directly before the conjugated verb." data-es="Para negar, simplemente coloca <strong>no</strong> directamente antes del verbo conjugado.">Place <strong>no</strong> before the conjugated verb.</p>
       <div class="example-box">
         <div class="sp">No trabajaré este fin de semana.</div>
-        <div class="en">I will not work this weekend.</div>
+        <div class="en" data-en="I will not work this weekend." data-es="No trabajaré este fin de semana.">I will not work this weekend.</div>
       </div>
       <div class="example-box">
         <div class="sp">El contador no vendrá a la reunión.</div>
-        <div class="en">The accountant will not come to the meeting.</div>
+        <div class="en" data-en="The accountant will not come to the meeting." data-es="El contador no vendrá a la reunión.">The accountant will not come to the meeting.</div>
       </div>
-
-      <h3>4. Reflexive Verbs</h3>
-      <p>Place the reflexive pronoun (<em>me, te, se, nos, os, se</em>) <strong>before</strong> the conjugated verb — the same position as in other tenses.</p>
+      <h3 data-en="4. Reflexive Verbs" data-es="4. Verbos Reflexivos">4. Reflexive Verbs</h3>
+      <p data-en="Place the reflexive pronoun (<em>me, te, se, nos, os, se</em>) <strong>before</strong> the conjugated verb." data-es="Coloca el pronombre reflexivo (<em>me, te, se, nos, os, se</em>) <strong>antes</strong> del verbo conjugado.">Place the reflexive pronoun before the conjugated verb.</p>
       <div class="example-box">
         <div class="sp">Me ducharé más tarde.</div>
-        <div class="en">I will shower later.</div>
+        <div class="en" data-en="I will shower later." data-es="Me ducharé más tarde.">I will shower later.</div>
       </div>
       <div class="example-box">
         <div class="sp">La peluquera se levantará temprano mañana.</div>
-        <div class="en">The hairdresser (f.) will get up early tomorrow.</div>
+        <div class="en" data-en="The hairdresser (f.) will get up early tomorrow." data-es="La peluquera se levantará temprano mañana.">The hairdresser (f.) will get up early tomorrow.</div>
       </div>
-
-      <h2>Common Irregular Stems</h2>
-      <p>Nine high-frequency verbs change their stems in the Simple Future. The endings remain exactly the same — only the base changes.</p>
-
+      <h2 data-en="Common Irregular Stems" data-es="Raíces Irregulares Comunes">Common Irregular Stems</h2>
+      <p data-en="Nine high-frequency verbs change their stems in the Simple Future. The endings remain exactly the same — only the base changes." data-es="Nueve verbos de alta frecuencia cambian su raíz en el Futuro Simple. Las terminaciones siguen siendo exactamente las mismas — solo cambia la base.">Nine common verbs use irregular stems.</p>
       <table class="irreg-table">
         <thead>
-          <tr><th>Infinitive</th><th>Irregular Stem</th><th>Yo form</th></tr>
+          <tr>
+            <th data-en="Infinitive" data-es="Infinitivo">Infinitive</th>
+            <th data-en="Irregular Stem" data-es="Raíz Irregular">Irregular Stem</th>
+            <th data-en="Yo form" data-es="Forma Yo">Yo form</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td><span class="sp">tener</span> — to have</td><td class="ending">tendr-</td><td class="sp">tendré</td></tr>
-          <tr><td><span class="sp">hacer</span> — to do / make</td><td class="ending">har-</td><td class="sp">haré</td></tr>
-          <tr><td><span class="sp">poner</span> — to put</td><td class="ending">pondr-</td><td class="sp">pondré</td></tr>
-          <tr><td><span class="sp">decir</span> — to say</td><td class="ending">dir-</td><td class="sp">diré</td></tr>
-          <tr><td><span class="sp">poder</span> — to be able to</td><td class="ending">podr-</td><td class="sp">podré</td></tr>
-          <tr><td><span class="sp">querer</span> — to want</td><td class="ending">querr-</td><td class="sp">querré</td></tr>
-          <tr><td><span class="sp">saber</span> — to know</td><td class="ending">sabr-</td><td class="sp">sabré</td></tr>
-          <tr><td><span class="sp">salir</span> — to leave</td><td class="ending">saldr-</td><td class="sp">saldré</td></tr>
-          <tr><td><span class="sp">venir</span> — to come</td><td class="ending">vendr-</td><td class="sp">vendré</td></tr>
+          <tr><td><span class="sp">tener</span> — <span data-en="to have" data-es="tener">to have</span></td><td class="ending">tendr-</td><td class="sp">tendré</td></tr>
+          <tr><td><span class="sp">hacer</span> — <span data-en="to do / make" data-es="hacer">to do / make</span></td><td class="ending">har-</td><td class="sp">haré</td></tr>
+          <tr><td><span class="sp">poner</span> — <span data-en="to put" data-es="poner">to put</span></td><td class="ending">pondr-</td><td class="sp">pondré</td></tr>
+          <tr><td><span class="sp">decir</span> — <span data-en="to say" data-es="decir">to say</span></td><td class="ending">dir-</td><td class="sp">diré</td></tr>
+          <tr><td><span class="sp">poder</span> — <span data-en="to be able to" data-es="poder">to be able to</span></td><td class="ending">podr-</td><td class="sp">podré</td></tr>
+          <tr><td><span class="sp">querer</span> — <span data-en="to want" data-es="querer">to want</span></td><td class="ending">querr-</td><td class="sp">querré</td></tr>
+          <tr><td><span class="sp">saber</span> — <span data-en="to know" data-es="saber">to know</span></td><td class="ending">sabr-</td><td class="sp">sabré</td></tr>
+          <tr><td><span class="sp">salir</span> — <span data-en="to leave" data-es="salir">to leave</span></td><td class="ending">saldr-</td><td class="sp">saldré</td></tr>
+          <tr><td><span class="sp">venir</span> — <span data-en="to come" data-es="venir">to come</span></td><td class="ending">vendr-</td><td class="sp">vendré</td></tr>
         </tbody>
       </table>
-
       <div class="callout">
-        <div class="callout-title">💡 Irregular Stems in Action</div>
-        <p><span style="font-style:italic">El bombero tendrá que salir rápidamente.</span> → The firefighter will have to leave quickly. (<em>tener</em> + <em>salir</em>, both irregular)</p>
-        <p><span style="font-style:italic">¿Sabrá la política la respuesta?</span> → I wonder if the politician knows the answer? (probability use with irregular <em>saber</em>)</p>
-        <p><span style="font-style:italic">El diseñador hará un prototipo mañana.</span> → The designer will make a prototype tomorrow. (irregular <em>hacer</em>)</p>
+        <div class="callout-title" data-en="💡 Irregular Stems in Action" data-es="💡 Raíces Irregulares en Acción">💡 Irregular Stems in Action</div>
+        <p data-en="<em>El bombero tendrá que salir rápidamente.</em> → The firefighter will have to leave quickly. (tener + salir, both irregular)" data-es="<em>El bombero tendrá que salir rápidamente.</em> → El bombero tendrá que salir rápidamente. (tener + salir, ambos irregulares)"><em>El bombero tendrá que salir rápidamente.</em> → The firefighter will have to leave quickly.</p>
+        <p data-en="<em>¿Sabrá la política la respuesta?</em> → I wonder if the politician knows the answer? (probability + irregular saber)" data-es="<em>¿Sabrá la política la respuesta?</em> → ¿Sabrá la política la respuesta? (uso de probabilidad con saber irregular)"><em>¿Sabrá la política la respuesta?</em> → I wonder if the politician knows the answer?</p>
+        <p data-en="<em>El diseñador hará un prototipo mañana.</em> → The designer will make a prototype tomorrow. (irregular hacer)" data-es="<em>El diseñador hará un prototipo mañana.</em> → El diseñador hará un prototipo mañana. (hacer irregular)"><em>El diseñador hará un prototipo mañana.</em> → The designer will make a prototype tomorrow.</p>
       </div>
     </div>
   </div>
-  <footer>© El Futuro Spanish Learning · All rights reserved</footer>
+  <footer data-en="© El Futuro Spanish Learning · All rights reserved" data-es="© El Futuro Aprendizaje de Español · Todos los derechos reservados">© El Futuro Spanish Learning · All rights reserved</footer>
 </div>
 
-<!-- ════════════════════════════ FUTURE PERFECT PAGE ════════════════════════════ -->
+<!-- ══ FUTURE PERFECT ══ -->
 <div id="page-future-perfect" class="page">
   <div class="masthead">
     <div class="masthead-title">El <span>Futuro</span></div>
   </div>
   <nav class="topnav">
-    <button onclick="showPage('home')">Home</button>
-    <button onclick="showPage('vocab')">Professions</button>
-    <button onclick="showPage('future')">Future Tense</button>
-    <button class="active" onclick="showPage('future-perfect')">Future Perfect</button>
+    <button onclick="showPage('home')" data-en="Home" data-es="Inicio">Home</button>
+    <button onclick="showPage('vocab')" data-en="Professions" data-es="Profesiones">Professions</button>
+    <button onclick="showPage('future')" data-en="Future Tense" data-es="Futuro Simple">Future Tense</button>
+    <button class="active" onclick="showPage('future-perfect')" data-en="Future Perfect" data-es="Futuro Perfecto">Future Perfect</button>
+    <div class="lang-toggle">
+      <button class="lang-btn lang-active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
   </nav>
   <div class="inner-page">
-    <button class="back-link" onclick="showPage('home')">Back to Home</button>
-    <div class="article-kicker">Grammar · Tenses</div>
-    <div class="article-headline">The Future Perfect: <em>El Futuro Perfecto</em></div>
-    <p class="article-standfirst">To say that something <em>will have happened</em> by a point in the future — or to guess that something <em>must have</em> happened in the past — the Future Perfect is your tense.</p>
-    <div class="article-img-slot">[ IMAGE PLACEHOLDER ]</div>
-
+    <button class="back-link" onclick="showPage('home')" data-en="Back to Home" data-es="Volver al Inicio">Back to Home</button>
+    <div class="article-kicker" data-en="Grammar · Tenses" data-es="Gramática · Tiempos Verbales">Grammar · Tenses</div>
+    <div class="article-headline" data-en="The Future Perfect: El Futuro Perfecto" data-es="El Futuro Perfecto: El Futuro Perfecto">The Future Perfect: El Futuro Perfecto</div>
+    <p class="article-standfirst" data-en="To say that something will have happened by a point in the future — or to guess that something must have happened in the past — the Future Perfect is your tense." data-es="Para decir que algo habrá ocurrido antes de un momento futuro — o para suponer que algo debe haber pasado en el pasado — el Futuro Perfecto es tu tiempo verbal.">To say something will have happened — or must have happened.</p>
+    <div class="article-img-slot"><img src="2.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
     <div class="article-body">
-      <h2>How to Form It</h2>
-      <p>The Future Perfect is a compound tense built from two parts: the <strong>future tense of <em>haber</em></strong> plus a <strong>past participle</strong>. The past participle never changes form — it's always the same regardless of subject.</p>
-
+      <h2 data-en="How to Form It" data-es="Cómo Formarlo">How to Form It</h2>
+      <p data-en="The Future Perfect is a compound tense built from two parts: the <strong>future tense of <em>haber</em></strong> plus a <strong>past participle</strong>. The past participle never changes form — it's always the same regardless of subject." data-es="El Futuro Perfecto es un tiempo compuesto formado por dos partes: el <strong>futuro de <em>haber</em></strong> más un <strong>participio pasado</strong>. El participio pasado nunca cambia de forma — es siempre el mismo independientemente del sujeto.">A compound tense: future of haber + past participle.</p>
       <table class="grammar-table">
         <thead>
-          <tr><th>Subject</th><th>Haber (Future)</th><th>Past Participle (-ar)</th><th>Past Participle (-er/-ir)</th></tr>
+          <tr>
+            <th data-en="Subject" data-es="Sujeto">Subject</th>
+            <th data-en="Haber (Future)" data-es="Haber (Futuro)">Haber (Future)</th>
+            <th data-en="Past Participle (-ar)" data-es="Participio (-ar)">Past Participle (-ar)</th>
+            <th data-en="Past Participle (-er/-ir)" data-es="Participio (-er/-ir)">Past Participle (-er/-ir)</th>
+          </tr>
         </thead>
         <tbody>
           <tr><td>Yo</td><td class="spanish">habré</td><td class="spanish">trabajado</td><td class="spanish">comido</td></tr>
@@ -767,104 +391,133 @@
           <tr><td>Ellos / Uds.</td><td class="spanish">habrán</td><td class="spanish">trabajado</td><td class="spanish">comido</td></tr>
         </tbody>
       </table>
-
-      <h2>The Four Key Usages</h2>
-
-      <h3>1. Completed Actions by a Future Point</h3>
-      <p>The primary usage: something that <em>will have been done</em> before a specific future moment. Look for clue phrases like <em>para cuando</em> (by the time) or <em>para el lunes</em> (by Monday).</p>
+      <h2 data-en="The Four Key Usages" data-es="Los Cuatro Usos Principales">The Four Key Usages</h2>
+      <h3 data-en="1. Completed Actions by a Future Point" data-es="1. Acciones Completadas Antes de un Momento Futuro">1. Completed Actions by a Future Point</h3>
+      <p data-en="The primary usage: something that <em>will have been done</em> before a specific future moment. Look for clue phrases like <em>para cuando</em> (by the time) or <em>para el lunes</em> (by Monday)." data-es="El uso principal: algo que <em>habrá sido hecho</em> antes de un momento futuro específico. Busca frases como <em>para cuando</em> o <em>para el lunes</em>.">Something that will have been done before a specific future moment.</p>
       <div class="example-box">
         <div class="sp">Para el viernes, habré terminado el informe.</div>
-        <div class="en">By Friday, I will have finished the report.</div>
+        <div class="en" data-en="By Friday, I will have finished the report." data-es="Para el viernes, habré terminado el informe.">By Friday, I will have finished the report.</div>
       </div>
       <div class="example-box">
         <div class="sp">Para el año que viene, la arquitecta habrá diseñado tres edificios.</div>
-        <div class="en">By next year, the architect (f.) will have designed three buildings.</div>
+        <div class="en" data-en="By next year, the architect (f.) will have designed three buildings." data-es="Para el año que viene, la arquitecta habrá diseñado tres edificios.">By next year, the architect will have designed three buildings.</div>
       </div>
       <div class="example-box">
         <div class="sp">Cuando llegues, el cocinero habrá preparado la cena.</div>
-        <div class="en">By the time you arrive, the chef will have prepared dinner.</div>
+        <div class="en" data-en="By the time you arrive, the chef will have prepared dinner." data-es="Cuando llegues, el cocinero habrá preparado la cena.">By the time you arrive, the chef will have prepared dinner.</div>
       </div>
       <div class="example-box">
         <div class="sp">Para cuando se gradúe, el estudiante habrá aprendido 2.000 palabras.</div>
-        <div class="en">By the time he graduates, the student will have learned 2,000 words.</div>
+        <div class="en" data-en="By the time he graduates, the student will have learned 2,000 words." data-es="Para cuando se gradúe, el estudiante habrá aprendido 2.000 palabras.">By the time he graduates, the student will have learned 2,000 words.</div>
       </div>
-
-      <h3>2. Probability / Supposition About the Past</h3>
-      <p>Just as the Simple Future expresses present probability, the Future Perfect expresses probability about a <em>past</em> action — often translated as "must have."</p>
+      <h3 data-en="2. Probability / Supposition About the Past" data-es="2. Probabilidad / Suposición sobre el Pasado">2. Probability About the Past</h3>
+      <p data-en='Just as the Simple Future expresses present probability, the Future Perfect expresses probability about a <em>past</em> action — often translated as "must have."' data-es='Así como el Futuro Simple expresa probabilidad presente, el Futuro Perfecto expresa probabilidad sobre una acción <em>pasada</em> — se traduce frecuentemente como "debe haber".'>The Future Perfect expresses probability about past actions ("must have").</p>
       <div class="example-box">
         <div class="sp">¿Dónde están? Ya se habrán ido.</div>
-        <div class="en">Where are they? They must have already left.</div>
+        <div class="en" data-en="Where are they? They must have already left." data-es="¿Dónde están? Ya se habrán ido.">Where are they? They must have already left.</div>
       </div>
       <div class="example-box">
         <div class="sp">El reportero habrá publicado el artículo esta mañana.</div>
-        <div class="en">The reporter must have published the article this morning.</div>
+        <div class="en" data-en="The reporter must have published the article this morning." data-es="El reportero habrá publicado el artículo esta mañana.">The reporter must have published the article this morning.</div>
       </div>
       <div class="example-box">
         <div class="sp">La psicóloga habrá tenido una sesión difícil hoy.</div>
-        <div class="en">The psychologist must have had a difficult session today.</div>
+        <div class="en" data-en="The psychologist must have had a difficult session today." data-es="La psicóloga habrá tenido una sesión difícil hoy.">The psychologist must have had a difficult session today.</div>
       </div>
-
-      <h3>3. Negation</h3>
-      <p>Place <strong>no</strong> before <em>haber</em>.</p>
+      <h3 data-en="3. Negation" data-es="3. Negación">3. Negation</h3>
+      <p data-en="Place <strong>no</strong> before <em>haber</em>." data-es="Coloca <strong>no</strong> antes de <em>haber</em>.">Place <strong>no</strong> before <em>haber</em>.</p>
       <div class="example-box">
         <div class="sp">No habré comido antes de salir.</div>
-        <div class="en">I will not have eaten before leaving.</div>
+        <div class="en" data-en="I will not have eaten before leaving." data-es="No habré comido antes de salir.">I will not have eaten before leaving.</div>
       </div>
       <div class="example-box">
         <div class="sp">El abogado no habrá revisado el contrato todavía.</div>
-        <div class="en">The lawyer will not have reviewed the contract yet.</div>
+        <div class="en" data-en="The lawyer will not have reviewed the contract yet." data-es="El abogado no habrá revisado el contrato todavía.">The lawyer will not have reviewed the contract yet.</div>
       </div>
-
-      <h3>4. Reflexive Verbs</h3>
-      <p>Place the reflexive pronoun <strong>before</strong> <em>haber</em>.</p>
+      <h3 data-en="4. Reflexive Verbs" data-es="4. Verbos Reflexivos">4. Reflexive Verbs</h3>
+      <p data-en="Place the reflexive pronoun <strong>before</strong> <em>haber</em>." data-es="Coloca el pronombre reflexivo <strong>antes</strong> de <em>haber</em>.">Place the reflexive pronoun before <em>haber</em>.</p>
       <div class="example-box">
         <div class="sp">Me habré lavado las manos.</div>
-        <div class="en">I will have washed my hands.</div>
+        <div class="en" data-en="I will have washed my hands." data-es="Me habré lavado las manos.">I will have washed my hands.</div>
       </div>
       <div class="example-box">
         <div class="sp">El bombero se habrá preparado antes de entrar.</div>
-        <div class="en">The firefighter will have prepared himself before entering.</div>
+        <div class="en" data-en="The firefighter will have prepared himself before entering." data-es="El bombero se habrá preparado antes de entrar.">The firefighter will have prepared himself before entering.</div>
       </div>
-
-      <h2>Irregular Past Participles</h2>
-      <p>These nine common verbs have irregular past participles used frequently in the Future Perfect. They must be memorised.</p>
-
+      <h2 data-en="Irregular Past Participles" data-es="Participios Pasados Irregulares">Irregular Past Participles</h2>
+      <p data-en="These nine common verbs have irregular past participles used frequently in the Future Perfect. They must be memorised." data-es="Estos nueve verbos comunes tienen participios pasados irregulares que se usan frecuentemente en el Futuro Perfecto. Deben memorizarse.">These nine verbs have irregular past participles.</p>
       <table class="irreg-table">
         <thead>
-          <tr><th>Infinitive</th><th>Past Participle</th></tr>
+          <tr>
+            <th data-en="Infinitive" data-es="Infinitivo">Infinitive</th>
+            <th data-en="Past Participle" data-es="Participio Pasado">Past Participle</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td><span class="sp">abrir</span> — to open</td><td class="sp">abierto</td></tr>
-          <tr><td><span class="sp">decir</span> — to say</td><td class="sp">dicho</td></tr>
-          <tr><td><span class="sp">escribir</span> — to write</td><td class="sp">escrito</td></tr>
-          <tr><td><span class="sp">hacer</span> — to do / make</td><td class="sp">hecho</td></tr>
-          <tr><td><span class="sp">morir</span> — to die</td><td class="sp">muerto</td></tr>
-          <tr><td><span class="sp">poner</span> — to put</td><td class="sp">puesto</td></tr>
-          <tr><td><span class="sp">romper</span> — to break</td><td class="sp">roto</td></tr>
-          <tr><td><span class="sp">ver</span> — to see</td><td class="sp">visto</td></tr>
-          <tr><td><span class="sp">volver</span> — to return</td><td class="sp">vuelto</td></tr>
+          <tr><td><span class="sp">abrir</span> — <span data-en="to open" data-es="abrir">to open</span></td><td class="sp">abierto</td></tr>
+          <tr><td><span class="sp">decir</span> — <span data-en="to say" data-es="decir">to say</span></td><td class="sp">dicho</td></tr>
+          <tr><td><span class="sp">escribir</span> — <span data-en="to write" data-es="escribir">to write</span></td><td class="sp">escrito</td></tr>
+          <tr><td><span class="sp">hacer</span> — <span data-en="to do / make" data-es="hacer">to do / make</span></td><td class="sp">hecho</td></tr>
+          <tr><td><span class="sp">morir</span> — <span data-en="to die" data-es="morir">to die</span></td><td class="sp">muerto</td></tr>
+          <tr><td><span class="sp">poner</span> — <span data-en="to put" data-es="poner">to put</span></td><td class="sp">puesto</td></tr>
+          <tr><td><span class="sp">romper</span> — <span data-en="to break" data-es="romper">to break</span></td><td class="sp">roto</td></tr>
+          <tr><td><span class="sp">ver</span> — <span data-en="to see" data-es="ver">to see</span></td><td class="sp">visto</td></tr>
+          <tr><td><span class="sp">volver</span> — <span data-en="to return" data-es="volver">to return</span></td><td class="sp">vuelto</td></tr>
         </tbody>
       </table>
-
       <div class="callout">
-        <div class="callout-title">💡 Irregular Participles + Professions</div>
-        <p><span style="font-style:italic">El arquitecto habrá hecho los planos para el lunes.</span> → The architect will have made the blueprints by Monday. (irregular: <em>hecho</em>)</p>
-        <p><span style="font-style:italic">La reportera habrá escrito el artículo antes de las seis.</span> → The reporter (f.) will have written the article before six o'clock. (irregular: <em>escrito</em>)</p>
-        <p><span style="font-style:italic">¿El secretario habrá visto el mensaje?</span> → Must the secretary have seen the message already? (irregular: <em>visto</em>; probability use)</p>
+        <div class="callout-title" data-en="💡 Irregular Participles + Professions" data-es="💡 Participios Irregulares + Profesiones">💡 Irregular Participles + Professions</div>
+        <p data-en="<em>El arquitecto habrá hecho los planos para el lunes.</em> → The architect will have made the blueprints by Monday. (irregular: hecho)" data-es="<em>El arquitecto habrá hecho los planos para el lunes.</em> → El arquitecto habrá hecho los planos para el lunes. (irregular: hecho)"><em>El arquitecto habrá hecho los planos para el lunes.</em> → The architect will have made the blueprints by Monday.</p>
+        <p data-en="<em>La reportera habrá escrito el artículo antes de las seis.</em> → The reporter (f.) will have written the article before six. (irregular: escrito)" data-es="<em>La reportera habrá escrito el artículo antes de las seis.</em> → La reportera habrá escrito el artículo antes de las seis. (irregular: escrito)"><em>La reportera habrá escrito el artículo antes de las seis.</em> → The reporter will have written the article before six.</p>
+        <p data-en="<em>¿El secretario habrá visto el mensaje?</em> → Must the secretary have seen the message already? (irregular: visto; probability use)" data-es="<em>¿El secretario habrá visto el mensaje?</em> → ¿El secretario habrá visto el mensaje? (irregular: visto; uso de probabilidad)"><em>¿El secretario habrá visto el mensaje?</em> → Must the secretary have seen the message?</p>
       </div>
-
     </div>
   </div>
-  <footer>© El Futuro Spanish Learning · All rights reserved</footer>
+  <footer data-en="© El Futuro Spanish Learning · All rights reserved" data-es="© El Futuro Aprendizaje de Español · Todos los derechos reservados">© El Futuro Spanish Learning · All rights reserved</footer>
 </div>
 
 <script>
+  // ── State ──
+  let currentLang = 'en';
+
+  // ── Page navigation ──
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + id).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Re-apply language to newly visible page
+    applyLang(currentLang);
   }
-</script>
 
+  // ── Core translation engine ──
+  function applyLang(lang) {
+    // Update all translatable elements
+    document.querySelectorAll('[data-en][data-es]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (text !== null) {
+        el.innerHTML = text;
+      }
+    });
+
+    // Sync all lang toggle buttons across every nav
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      const isEN = btn.textContent.trim() === 'EN';
+      const isES = btn.textContent.trim() === 'ES';
+      btn.classList.toggle('lang-active', (lang === 'en' && isEN) || (lang === 'es' && isES));
+    });
+
+    // Update html lang attribute
+    document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+  }
+
+  // ── Public setter called by buttons ──
+  function setLang(lang) {
+    currentLang = lang;
+    applyLang(lang);
+  }
+
+  // ── Init ──
+  applyLang('en');
+</script>
 </body>
 </html>
